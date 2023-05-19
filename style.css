@@ -1,0 +1,131 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+form{
+    /* display: flex;
+    align-items: center;
+    justify-content: space-evenly; */
+    margin: auto;
+    padding: 10px;
+    max-width: 100%;
+    display: grid;
+    place-content: center;
+    width: 50%;
+
+}
+@media screen and (max-width: 540px) {
+    form{
+        margin: auto;
+        display: grid;
+        place-content: center;
+        max-width: 100%;
+        width: 100%;
+    }
+}
+h1{
+    text-align: center;
+    text-transform: uppercase;
+    font-variant: small-caps;
+    font-size: 20px;
+    margin: 19px;
+    padding: 10px;
+    color: blueviolet;
+}
+#submit{
+    padding: 10px;
+    background-color: aqua;
+    border: none;
+    outline: none;
+    margin: auto 5px;
+    font-size: 17px;
+    cursor: pointer;
+}
+#submit:hover{
+    background-color: white;
+    color: red;
+    transition: all 0.5s;
+}
+.input-field{
+    margin: auto;
+    border: 1px solid red;
+    padding: 40px;
+    background-color: blue;
+    border-style: double;
+    border-radius: 10px;
+    width: 100%;
+
+
+}
+@media screen and (max-width: 540px) {
+     .input-field{
+        position: relative;
+        width: 100%;
+    }
+}
+label{
+    text-transform: uppercase;
+    color: white;
+    margin: auto 5px;
+}
+input{
+    padding: 10px;
+    margin: 20px 5px;
+    margin-top: 0;
+    border: none;
+    outline: none;
+    background-color: salmon;
+    color: aqua;
+
+
+}
+#check-1, #check-2, #check-3, #check-4, #check-5{
+    color: green;
+    display: none;
+} 
+#mark-1, #mark-2, #mark-3, #mark-4, #mark-5{
+    color: red;
+}
+
+p{
+    position: relative;
+    top: -9px;
+    left: 20px;
+}
+.fa-xmark, .fa-check{
+    font-size: 10px;
+    font-weight: 900;
+}
+.success-message{
+    line-height: .7;
+    display: flex;
+    flex-direction: column;
+    word-spacing: 0;
+    position: absolute;
+    right: 30%;
+    top: 5px;
+
+}
+@media screen and (max-width: 540px) {
+    .success-message{
+        right: 20%;
+        top: 5px;
+    }
+}
+.error-message{
+    line-height: .7;
+    display: flex;
+    flex-direction: column;
+    word-spacing: 10px;
+    position: absolute;
+    right: 30px;
+    top: 5px;
+    
+}
+@media screen and (max-width: 540px) {
+    .error-message{
+        right: 20px;
+        top: 5px;
+    }
+}

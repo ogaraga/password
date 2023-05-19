@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>PASSWORD MULTICONDITIONS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="bodies">
+
+    <h1>project to test the functionality of Js on password multi-conditions</h1>
+    
+    <form action="#" method="get" id="formy">
+        
+        <div class="input-field">
+            <label for="pswd">Password</label><br>
+            <input type="password" name="password" id="pswd_1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12}" 
+            title="must contain more than 12 characters atleast, contain a number, have one or two lower and upercases" class="form-control" placeholder="Enter your password"><br>
+            <label for="pswd">Confirm Password</label><br>
+            <input type="password" name="password" id="pswd_2" class="form-control" placeholder="Confirm your password"><br>
+            <button type="submit" id="submit">Submit</button>
+            <span style="font-size: 15px;" id="emptz"></span>
+        </div>
+
+        <div id="success-message">
+            <span id="check-1" class="fa-solid fa-check"><p>At least one letter</p></span><br>
+            <span id="check-2" class="fa-solid fa-check"><p>At least one capital letter</p></span><br>
+            <span id="check-3" class="fa-solid fa-check"><p>At least one number</p></span><br>
+            <span id="check-4" class="fa-solid fa-check"><p>At least 12 characters</p></span><br>
+            <span id="check-5" class="fa-solid fa-check"><p>The two passwords mus match</p></span><br>
+    
+        </div>
+
+        <div id="error-message" style="display: none;">
+            <span id="mark-1" class="fa-solid fa-xmark"><p>At least one letter</p></span><br>
+            <span id="mark-2" class="fa-solid fa-xmark"><p>At least one capital letter</p></span><br>
+            <span id="mark-3" class="fa-solid fa-xmark"><p>At least one number</p></span><br>
+            <span id="mark-4" class="fa-solid fa-xmark"><p>At least 12 characters</p></span><br>
+            <span id="mark-5" class="fa-solid fa-xmark"><p>The two passwords must match</p></span><br>
+    
+        </div>
+        
+    </form>
+    <script>
+    const submit = document.getElementById("submit");
+    const formy = document.getElementById("formy");
+    const textbody = document.getElementById("emptz");
+    var pass_1 = document.getElementById("pswd_1"); 
+    var pass_2 = document.getElementById("pswd_2"); 
+    var faCheck = document.getElementById("success-message");
+    var xMark = document.getElementById("error-message");
+    var mark1 = document.getElementById("mark-1");
+    var check1 = document.getElementById("check-1");
+    var mark2 = document.getElementById("mark-2");
+    var check2 = document.getElementById("check-2");
+    var mark3 = document.getElementById("mark-3");
+    var check3 = document.getElementById("check-3");
+    var mark4 = document.getElementById("mark-4");
+    var check4 = document.getElementById("check-4")
+    var mark5 = document.getElementById("mark-5");
+    var check5 = document.getElementById("check-5");
+    
+    pass_1.onfocus = ()=>{
+        xMark.style.display = "block";
+
+    }
+    pass_1.onblur =()=>{
+        xMark.style.display = "none";
+        faCheck.style.display = "none";
+    }
+    
+
+
+
+    pass_1.onkeyup = ()=>{
+    let oneletter = /[a-z]/g;//match atleast one lowercase
+    let capital = /[A-Z]/g;//match atleast one uppercase
+    let number = /[0-9]/g;//match atleast one number
+        if(pass_1.value.match(oneletter)){
+            check1.style.display = "block";
+            mark1.style.display = "none";
+            
+        }
+        else{
+            mark1.style.display = "block";
+            check1.style.display = "none";
+     
+        }
+        if(pass_1.value.match(capital)){
+            check2.style.display = "block";
+            mark2.style.display = "none";
+            
+        }
+        else{
+            mark2.style.display = "block";
+            check2.style.display = "none";
+     
+        }
+        if(pass_1.value.match(number)){
+            check3.style.display = "block";
+            mark3.style.display = "none";
+            
+        }
+        else{
+            mark3.style.display = "block";
+            check3.style.display = "none";
+     
+        }
+        if(pass_1.value.length >= 12){
+            check4.style.display = "block";
+            mark4.style.display = "none"
+        }
+       else{
+            check4.style.display = "none";
+            mark4.style.display = "block"
+       
+       } 
+       
+    }
+    pass_2.onfocus = ()=>{
+        faCheck.style.display = "block";
+        xMark.style.display = "block"
+    }
+    pass_2.onkeyup = ()=>{
+        if (pass_1.value != pass_2.value) {
+        check5.style.display = "none";
+        mark5.style.display = "block";
+        
+       }
+       else{
+        check5.style.display = "block"
+        mark5.style.display = "none";
+      
+       }
+      
+    }
+    submit.onclick = ()=>{
+        if(pass_1.value && pass_2.value){
+        formy.style.display = "none";
+        document.getElementById("bodies").style.marginLeft = "20%";
+        document.getElementById("bodies").textContent = "Form tested ok and now sent to server-side";
+        document.getElementById("bodies").style.color = "green";
+    }
+    else{
+        formy.style.display = "block";
+        textbody.innerHTML = " Ooops!!! Password is not tested yet! Try again!";
+        textbody.style.color = "red";
+    
+    }
+}
+
+    
+    </script>
+    </body>
+</html>
