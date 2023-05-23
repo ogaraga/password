@@ -139,7 +139,15 @@
       
     }
     submit.onclick = (event)=>{
-        if(pass_1.value == pass_2.value && pass_1.value != "" && pass_2.value != "" && pass_1.value.length >=12 && pass_2.value.length >=12){
+        let oneletter = /[a-z]/g;//match atleast one lowercase
+        let capital = /[A-Z]/g;//match atleast one uppercase
+        let number = /[0-9]/g;//match atleast one number
+    
+        if(pass_1.value == pass_2.value && pass_1.value != "" 
+        && pass_2.value != "" && pass_1.value.length >=12 
+        && pass_2.value.length >=12 && 
+        pass_1.value.match([oneletter, capital, number]) && pass_2.value.match([oneletter, capital, number])){
+        
         formy.style.display = "none";
         document.getElementById("bodies").style.marginLeft = "20%";
         document.getElementById("bodies").textContent = "Multi-password conditions tested ok and now sent to server-side";
