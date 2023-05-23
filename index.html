@@ -12,9 +12,9 @@
 <body id="bodies">
 
     <h1>project to test the functionality of Js on password multi-conditions</h1>
-    
+    <!--section for the form handling  -->
     <form action="#" method="get" id="formy">
-        
+        <!--input field section  -->
         <div class="input-field">
             <label for="pswd">Password</label><br>
             <input type="password" name="password" id="pswd_1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12}" 
@@ -24,7 +24,7 @@
             <button type="submit" id="submit">Submit</button>
             <span style="font-size: 15px;" id="emptz"></span>
         </div>
-
+<!-- section for success/valid message if all conditions are fulfilled -->
         <div id="success-message">
             <span id="check-1" class="fa-solid fa-check"><p>At least one letter</p></span><br>
             <span id="check-2" class="fa-solid fa-check"><p>At least one capital letter</p></span><br>
@@ -33,7 +33,7 @@
             <span id="check-5" class="fa-solid fa-check"><p>The two passwords mus match</p></span><br>
     
         </div>
-
+<!-- section for error message/invalid message if some or all conditions fail -->
         <div id="error-message" style="display: none;">
             <span id="mark-1" class="fa-solid fa-xmark"><p>At least one letter</p></span><br>
             <span id="mark-2" class="fa-solid fa-xmark"><p>At least one capital letter</p></span><br>
@@ -44,7 +44,8 @@
         </div>
         
     </form>
-    <script>
+  <!-- javascripting section -->
+  <script>
     const submit = document.getElementById("submit");
     const formy = document.getElementById("formy");
     const textbody = document.getElementById("emptz");
@@ -75,7 +76,7 @@
 
 
 
-    pass_1.onkeyup = ()=>{
+    pass_1.onkeyup = (e)=>{
     let oneletter = /[a-z]/g;//match atleast one lowercase
     let capital = /[A-Z]/g;//match atleast one uppercase
     let number = /[0-9]/g;//match atleast one number
@@ -137,8 +138,8 @@
        }
       
     }
-    submit.onclick = ()=>{
-        if(pass_1.value && pass_2.value){
+    submit.onclick = (event)=>{
+        if(pass_1.value == pass_2.value){
         formy.style.display = "none";
         document.getElementById("bodies").style.marginLeft = "20%";
         document.getElementById("bodies").textContent = "Multi-password conditions tested ok and now sent to server-side";
