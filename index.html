@@ -18,9 +18,9 @@
         <div class="input-field">
             <label for="pswd">Password</label><br>
             <input type="password" name="password" id="pswd_1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12}" 
-            title="must contain more than 12 characters atleast, contain a number, have one or two lower and upercases" class="form-control" placeholder="Enter your password"><br>
+            title="must contain more than 12 characters atleast, contain a number, have one or two lower and upercases" class="form-control" placeholder="Enter your password" required><br>
             <label for="pswd">Confirm Password</label><br>
-            <input type="password" name="password" id="pswd_2" class="form-control" placeholder="Confirm your password"><br>
+            <input type="password" name="password" id="pswd_2" class="form-control" placeholder="Confirm your password" required><br>
             <button type="submit" id="submit">Submit</button>
             <span style="font-size: 15px;" id="emptz"></span>
         </div>
@@ -139,7 +139,7 @@
       
     }
     submit.onclick = (event)=>{
-        if(pass_1.value == pass_2.value){
+        if(pass_1.value == pass_2.value && pass_1.value != "" && pass_2.value != "" && pass_1.value.length >=12 && pass_2.value.length >=12){
         formy.style.display = "none";
         document.getElementById("bodies").style.marginLeft = "20%";
         document.getElementById("bodies").textContent = "Multi-password conditions tested ok and now sent to server-side";
