@@ -18,9 +18,10 @@
         <div class="input-field">
             <label for="pswd">Password</label><br>
             <input type="password" name="password" id="pswd_1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12}" 
-            title="must contain more than 12 characters atleast, contain a number, have one or two lower and upercases" class="form-control" placeholder="Enter your password" required><br>
+            title="Must contain more than 12 characters atleast, a number atleast, have one or two lower & upercases" class="form-control" placeholder="Enter your password" required><br>
+            <i class="fa-solid fa-eye"></i><i class="fa-solid fa-eye-slash"></i>
             <label for="pswd">Confirm Password</label><br>
-            <input type="password" name="password" id="pswd_2" class="form-control" placeholder="Confirm your password" required><br>
+            <input type="password" name="password" id="pswd_2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12}" title="Must contain more than 12 characters atleast, a number atleast, have one or two lower & upercases" class="form-control" placeholder="Confirm your password" required><br>
             <button type="submit" id="submit">Submit</button>
             <span style="font-size: 15px;" id="emptz"></span>
         </div>
@@ -46,6 +47,8 @@
     </form>
   <!-- javascripting section -->
   <script>
+    var goodEye = document.querySelector(".fa-eye");
+    var badEye = document.querySelector(".fa-eye-slash");
     const submit = document.getElementById("submit");
     const formy = document.getElementById("formy");
     const textbody = document.getElementById("emptz");
@@ -63,7 +66,34 @@
     var check4 = document.getElementById("check-4")
     var mark5 = document.getElementById("mark-5");
     var check5 = document.getElementById("check-5");
-    
+    goodEye.addEventListener("click", ()=>{
+       if (pass_1.type == "password" && pass_2.type == "password"){
+        badEye.style.display = "block";
+        goodEye.style.display = "none";
+        pass_1.type = "text";
+        pass_2.type = "text";
+     }
+     else{
+        goodEye.style.display = "block";
+        badEye.style.display = "none";
+        pass_1.type = "password";
+        pass_2.type = "password";
+     }
+    })
+    badEye.addEventListener("click", ()=>{
+       if (pass_1.type == "text" && pass_2.type == "text"){
+        goodEye.style.display = "block";
+        badEye.style.display = "none";
+        pass_1.type = "password";
+        pass_2.type = "password";
+     }
+     else{
+        badEye.style.display = "block";
+        goodEye.style.display = "none";
+        pass_1.type = "text";
+        pass_2.type = "text";
+     }
+    })
     pass_1.onfocus = ()=>{
         xMark.style.display = "block";
 

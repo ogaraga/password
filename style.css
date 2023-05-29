@@ -4,9 +4,6 @@
     box-sizing: border-box;
 }
 form{
-    /* display: flex;
-    align-items: center;
-    justify-content: space-evenly; */
     margin: auto;
     padding: 10px;
     max-width: 100%;
@@ -32,6 +29,32 @@ h1{
     margin: 19px;
     padding: 10px;
     color: blueviolet;
+}
+.fa-eye-slash{
+    top: 24%;
+    left: 55%;
+    position: absolute;
+    align-items: center;
+    display: none;
+    justify-content: center;
+    cursor: pointer;
+}
+.fa-eye{
+    position: absolute;
+    top: 24%;
+    left: 55%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    
+}
+    @media screen and (max-width: 540px) {
+        .fa-eye, .fa-eye-slash{
+            top: 65px;
+            left: 75%;  
+        }
+    
 }
 #submit{
     padding: 10px;
