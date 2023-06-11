@@ -66,30 +66,30 @@
     var check4 = document.getElementById("check-4")
     var mark5 = document.getElementById("mark-5");
     var check5 = document.getElementById("check-5");
-    goodEye.addEventListener("click", ()=>{
+    badEye.addEventListener("click", ()=>{
        if (pass_1.type == "password" && pass_2.type == "password"){
-        badEye.style.display = "block";
-        goodEye.style.display = "none";
+        badEye.style.display = "none";
+        goodEye.style.display = "block";
         pass_1.type = "text";
         pass_2.type = "text";
      }
      else{
-        goodEye.style.display = "block";
-        badEye.style.display = "none";
+        goodEye.style.display = "none";
+        badEye.style.display = "block";
         pass_1.type = "password";
         pass_2.type = "password";
      }
     })
-    badEye.addEventListener("click", ()=>{
+    goodEye.addEventListener("click", ()=>{
        if (pass_1.type == "text" && pass_2.type == "text"){
-        goodEye.style.display = "block";
-        badEye.style.display = "none";
+        goodEye.style.display = "none";
+        badEye.style.display = "block";
         pass_1.type = "password";
         pass_2.type = "password";
      }
      else{
-        badEye.style.display = "block";
-        goodEye.style.display = "none";
+        badEye.style.display = "none";
+        goodEye.style.display = "block";
         pass_1.type = "text";
         pass_2.type = "text";
      }
